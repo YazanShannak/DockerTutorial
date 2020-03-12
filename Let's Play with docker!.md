@@ -22,7 +22,7 @@ docker run command start a new container from a certain image. If the image is n
 
 <img src="C:\Users\DELL\Desktop\Docker photo\hello-world.jpg" style="zoom:67%;" />
 
-Congratulations!! you have just downloaded your first image, created your first container. Good Job.
+Congratulations!! you have just downloaded your first image and created your first container. Good Job.
 
 
 
