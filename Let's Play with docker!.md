@@ -99,7 +99,29 @@ Expected output:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-docker
+`docker info` command: gives a detailed description about docker docker components including but limited to: the number of running, stopped paused containers, number of images, docker version, volumes, product license, CPU and memory usage.
+
+```
+docker info
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker info.jpg" alt="docker info" style="zoom: 67%;" />
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker stats` command: gives a detailed information about the resources consumption such as CPU, RAM and network  of your local machine by the running containers.
+
+```
+docker info
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker stats.jpg" alt="docker stats" style="zoom: 67%;" />
+
+
 
 #### Image commands
 
