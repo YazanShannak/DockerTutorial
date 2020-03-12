@@ -12,7 +12,7 @@ To start with docker, make sure that docker is already running on your machine a
 
 ## My First Docker Image (hello-world)
 
-Docker hello-world image is an introductory image that introduces the user to the performed processes by docker to run a container from a certain image, to run Hello-world image type this command in your PowerShell or terminal window :
+Docker hello-world image is an introductory image that introduces the user to the performed processes by docker to run a container from a certain image, to run `hello-world` image type this command in your PowerShell or terminal window :
 
 ```
 docker run hello-world
@@ -24,5 +24,49 @@ docker run command start a new container from a certain image. If the image is n
 
 Congratulations!! you have just downloaded your first image and created your first container. Good Job.
 
+## Docker Commands
 
+Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into six categories including :
+
+1. General commands
+2. Container commands
+3. Image commands
+4. Volume commands.
+5. Network commands
+6. Registry commands
+
+We will pass in a detailed manner through each category and provide a specific example to the most important commands in each category. it is worth noting that docker has a wide range commands that can not be covered in one tutorial so bear in that how much you practice, how much you gain experience and knowledge. One more thing to to mention before starting our journey is that docker provides a detailed description of its commands. So, in case you are stuck with a certain commands do not hesitate and feel free to ask Docker using the help command as follow: 
+
+```
+docker [command name] --help
+eg: docker version --help
+```
+
+### Docker CLI
+
+#### General commands
+
+
+
+#### Container commands
+
+
+
+#### Image commands
+
+
+
+#### Volumes Commands
+
+
+
+#### Network Commands
+
+
+
+#### Registry Commands
+
+
+
+### Docker Instruction Commands
 
