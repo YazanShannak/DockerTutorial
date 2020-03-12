@@ -49,29 +49,63 @@ eg: docker version --help
 
 Flags are not docker commands, but they play an important role in controlling the results of the commands you give for docker to perform, so, you can think of the flags to docker commands as the salt to the food. And thus, you have to gain a good knowledge in dealing with them. In fact, the same flag has different meanings in different contexts of the command, but we list here some of the most important and common flags in docker commands along with their discerption in the following table:
 
-| Flag   | Discerption  |
-| :----- | :----------- |
-| -a     | all          |
-| -d     | detach       |
-| -f     | force remove |
-| -p     | publish      |
-| -q     |              |
-| -t     | tag          |
-| -v     | volume       |
-| --it   |              |
-| --name |              |
-|        |              |
-|        |              |
+| Flag   | Discerption                                              |
+| :----- | :------------------------------------------------------- |
+| -a     | all                                                      |
+| -d     | detach                                                   |
+| -f     | force remove                                             |
+| -p     | publish                                                  |
+| -q     |                                                          |
+| -t     | tag                                                      |
+| -v     | volume                                                   |
+| --it   |                                                          |
+| --name |                                                          |
+| --help | help: gives a detailed description of a specific command |
+|        |                                                          |
 
 #### General commands
+
+In the following section, we are going to describe a set of 
+
+`docker version` commands: gives a detailed description about the docker version you are using.
+
+```
+docker version
+```
+
+```
+docker -v
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker version command.jpg" alt="docker version command" style="zoom: 50%;" />
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker ps` command: gives a list of either active containers or all containers (active and switched off).
+
+```
+docker ps
+```
+
+```
+docker ps-a
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker ps.jpg" alt="docker ps" style="zoom: 67%;" />
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker
+
+#### Image commands
 
 
 
 #### Container commands
-
-
-
-#### Image commands
 
 
 
