@@ -26,7 +26,7 @@ Congratulations!! you have just downloaded your first image and created your fir
 
 ## Docker Commands
 
-Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into six categories including :
+Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into seven categories including :
 
 1. Important flags 
 2. General commands
@@ -44,6 +44,24 @@ eg: docker version --help
 ```
 
 ### Docker CLI
+
+#### Important flags
+
+Flags are not docker commands, but they play an important role in controlling the results of the commands you give for docker to perform, so, you can think of the flags to docker commands as the salt to the food. And thus, you have to gain a good knowledge in dealing with them. In fact, the same flag has different meanings in different contexts of the command, but we list here some of the most important and common flags in docker commands along with their discerption in the following table:
+
+| Flag   | Discerption  |
+| :----- | :----------- |
+| -a     | all          |
+| -d     | detach       |
+| -f     | force remove |
+| -p     | publish      |
+| -q     |              |
+| -t     | tag          |
+| -v     | volume       |
+| --it   |              |
+| --name |              |
+|        |              |
+|        |              |
 
 #### General commands
 
