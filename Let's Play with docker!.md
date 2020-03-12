@@ -28,12 +28,13 @@ Congratulations!! you have just downloaded your first image and created your fir
 
 Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into six categories including :
 
-1. General commands
-2. Container commands
-3. Image commands
-4. Volume commands.
-5. Network commands
-6. Registry commands
+1. Important flags 
+2. General commands
+3. Container commands
+4. Image commands
+5. Volume commands.
+6. Network commands
+7. Registry commands
 
 We will pass in a detailed manner through each category and provide a specific example to the most important commands in each category. it is worth noting that docker has a wide range commands that can not be covered in one tutorial so bear in that how much you practice, how much you gain experience and knowledge. One more thing to to mention before starting our journey is that docker provides a detailed description of its commands. So, in case you are stuck with a certain commands do not hesitate and feel free to ask Docker using the help command as follow: 
 
