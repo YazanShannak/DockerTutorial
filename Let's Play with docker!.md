@@ -1,4 +1,4 @@
-# Let's Play with docker!
+# Getting your hands dirty with Docker!
 
 [TOC]
 
@@ -361,7 +361,31 @@ Resume a paused container :
 docker container unpause <container-name>
 ```
 
+Force stop of a certain container:
 
+```
+docker container kill <container-name>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`performing commands inside container`: there are two command that enables you to connect into a certain container and and perform some operations inside it. these commands are `attach` and `exec` .
+
+`docker attach` command: This command  attaches your terminal to a running container using the container name as follow:
+
+```
+docker container attach <container-name>
+```
+
+you have to ensure that the attached container is running in the interactive mode before performing this command. once you are attached to the container, you can act as you are in the terminal of the container. But the problem with this commands is once you exit the container terminal, the container will in turn stop running. So, this command is useful when you are planning to run a certain command and stop the container. But what is the solution if we want to keep our container up and running after performing our commands inside it?
+
+`docker exec` command: this command overcome the previously mentioned problems by applying it as follow:
+
+```
+docker container exec -it <container-name> bash
+```
+
+Consequently, a `born again shell` (bash) terminal will be opened to allow you apply your commands inside the container while keeping it running once you exit the bash.
 
 #### Volumes Commands
 
