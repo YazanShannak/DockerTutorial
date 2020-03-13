@@ -36,7 +36,7 @@ In a detailed manner , Docker is a new open source Container-Based technology th
 
 ### Docker Vs Virtual Machines:
 
-![](.\Images\Docker-vs-VM..png)
+![](H:\DockerTutorial\Images\Docker-vs-VM..jpg)
 
 Virtual machines are more resource-intensive than Docker containers as the virtual machines need to load the entire OS to start. The lightweight architecture of Docker containers is less resource-intensive than virtual machines. 
 
