@@ -114,22 +114,66 @@ Expected output:
 `docker stats` command: gives a detailed information about the resources consumption such as CPU, RAM and network  of your local machine by the running containers.
 
 ```
-docker info
+docker Stats 
 ```
 
 Expected output:
 
 <img src="C:\Users\DELL\Desktop\Docker photo\docker stats.jpg" alt="docker stats" style="zoom: 67%;" />
 
+To obtain the stats of a specific container:
+
+```
+docker stats <container-name> 
+```
+
+ or
+
+```
+docker stats <container-ID> 
+```
+
 
 
 #### Image commands
+
+`docker image pull` command: allow the user to download image from either docker hub or docker registry into your local machine using the following structure:
+
+```
+docker image pull <image-name>[:tag]
+```
+
+For instance, pulling the the latest version of `hello-world` can be achieved through the following command: 
+
+```
+docker pull image hello-world:latest
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\doker pull.jpg" alt="doker pull" style="zoom: 67%;" />
+
+note that docker will look for the image on your local machine if it is not available, docker will download it directly from `docker HUB`. Further, the `tag` keyword represents the version of the image you are going to download. Image name and tag can be directly obtained from docker HUB. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker image push` command: allow the user to transfer to transfer his/her own created into either private registry or public registry (docker HUB) using the following structure: 
+
+```
+docker image push [registry-name/][username/]<image-name>[:tag]
+```
+
+For instance, I will push the previously downloaded hello-world image to  my public registry on docker HUB as follow: 
+
+```
+
+```
 
 
 
 #### Container commands
 
-
+`docker container run` commands:  run command enables the user to create new container from a certain image, there multiple option when 
 
 #### Volumes Commands
 
