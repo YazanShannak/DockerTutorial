@@ -36,7 +36,7 @@ In a detailed manner , Docker is a new open source Container-Based technology th
 
 ### Docker Vs Virtual Machines:
 
-![](H:\DockerTutorial\Images\Docker-vs-VM..png)
+![](.\Images\Docker-vs-VM..png)
 
 Virtual machines are more resource-intensive than Docker containers as the virtual machines need to load the entire OS to start. The lightweight architecture of Docker containers is less resource-intensive than virtual machines. 
 
@@ -114,7 +114,7 @@ The first option is to use the script provided at [here](https://get.docker.com)
 to use the script, use this command:
 
 ```
-# curl -s https://get.docker.com/ | sudo sh
+curl -s https://get.docker.com/ | sudo sh
 ```
 
 For more information visit this link: [Docker for linux](https://docs.docker.com/install/)
@@ -124,20 +124,20 @@ For more information visit this link: [Docker for linux](https://docs.docker.com
 -  Add the official Docker repository:
 
   ```
-  # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   ```
 
 - Install Docker Ce Engine:
 
   ```
-  # yum install docker-ce
+  yum install docker-ce
   ```
 
 - Configure the docker daemon to start automatically in case if it is not started automatically after installation:
 
   ```
-  # systemctl enable docker.service
-  # systemctl start docker.service
+  systemctl enable docker.service
+  systemctl start docker.service
   ```
 
   **Start enjoying Docker Services**
@@ -149,13 +149,13 @@ For more information visit this link:  [Docker for CentOS](https://docs.docker.c
 - Add the GPG key for Docker repository:
 
   ```
-  # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudu apt-key add-
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudu apt-key add-
   ```
 
 - Add the official Docker repository :
 
   ```
-  # add-apt-repository "deb[arch=amd64] https://download.docker.com/linux/ubuntu/$(lsb_release -cs) stable"
+  add-apt-repository "deb[arch=amd64] https://download.docker.com/linux/ubuntu/$(lsb_release -cs) stable"
   ```
 
 - update the apt database and install Docker-CE Engine:
@@ -167,8 +167,8 @@ For more information visit this link:  [Docker for CentOS](https://docs.docker.c
 - Configure the docker daemon to start automatically in case if it is not started automatically after installation:
 
   ```
-  # systemctl enable docker.service
-  # systemctl start docker.service
+  systemctl enable docker.service
+  systemctl start docker.service
   ```
 
 **Start enjoying Docker Services**
@@ -202,7 +202,7 @@ For more information visit this link: [Docker for Windows](https://docs.docker.c
 3. Run 
 
    ```
-   # docker -v
+   docker -v
    ```
 
    Expected Output:
@@ -218,7 +218,7 @@ For more information visit this link: [Docker for Windows](https://docs.docker.c
 3. Run 
 
    ```
-   # docker -v
+   docker -v
    ```
    
    Expected Output:
@@ -231,7 +231,7 @@ For more information visit this link: [Docker for Windows](https://docs.docker.c
 
 docker Is a template or blueprint that contains all the data and metadata needed to run the containers which are launched from a certain image. You can think of it as Class in OOP, the image is comprised of a layers, each layer is a set of filesystem changes and has a unique ID upon its creation. Further, Docker image is immutable (Read-only template), the following figure descries Docker Image architecture:  
 
-<img src="H:\hadoop-ambari-docker\Images\Docker-Image-Structure.jpeg" style="zoom:33%;" />
+<img src=".\Images\Docker-Image-Structure.jpeg" style="zoom:33%;" />
 
 
 
@@ -257,7 +257,9 @@ For more information visit this link: [Docker Image](https://docs.docker.com/eng
 
 Docker containers are created from docker images , you can think of it as a class instance in OOP. It differs from Docker image in creating a writable layer on the top of docker image that enables the user to commit changes on the on containerized image and create a new image out of it. Further it is also possible to have several running  containers from the same image, each of the running containers is an isolated and secure application environment, the following figure descries Docker Image architecture:
 
-<img src="H:\hadoop-ambari-docker\Images\Docker-Container-Structure.jpeg" style="zoom:33%;" />
+<img src="./Images/Docker-Container-Structure.jpeg" style="zoom:33%;" />
+
+
 
 ### Basic Docker container command
 
@@ -302,13 +304,13 @@ For more information visit this link: [Docker HUB Docs](https://docs.docker.com/
 Searching for MySQL image on from public repository (Docker Hub), You can either directly search the docker HUB website to search for the desired image or doing it from the terminal or windows powershell as shown in the example which describe the looking up for python image:
 
 ```
-# docker search python
+docker search python
 ```
 
 once you found the desired image, you have to download it using the following code:
 
 ```
-# docker pull python
+docker pull python
 ```
 
 ## Docker Private Registry 
@@ -325,7 +327,7 @@ Docker private Registry is storage system used to store the private images on a 
 To create a local registry, apply the following command
 
 ```
-# docker run -d -p 5000:5000 --restart=always --name registry -v data:/var/lib/registry registry :2 
+docker run -d -p 5000:5000 --restart=always --name registry -v data:/var/lib/registry registry :2 
 ```
 
 in the previous command, the registry data is persisted as a docker volume on the container filesystem. and thus if you want to change the location of the registry volume, just change the director after the  parameter`-v` .
