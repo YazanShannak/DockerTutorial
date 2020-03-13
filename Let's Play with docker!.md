@@ -49,19 +49,19 @@ eg: docker version --help
 
 Flags are not docker commands, but they play an important role in controlling the results of the commands you give for docker to perform, so, you can think of the flags to docker commands as the salt to the food. And thus, you have to gain a good knowledge in dealing with them. In fact, the same flag has different meanings in different contexts of the command, but we list here some of the most important and common flags in docker commands along with their discerption in the following table:
 
-| Flag   | Discerption                                              |
-| :----- | :------------------------------------------------------- |
-| -a     | all                                                      |
-| -d     | detach                                                   |
-| -f     | force remove                                             |
-| -p     | publish                                                  |
-| -q     |                                                          |
-| -t     | tag                                                      |
-| -v     | volume                                                   |
-| --it   |                                                          |
-| --name |                                                          |
-| --help | help: gives a detailed description of a specific command |
-|        |                                                          |
+| Flag   | Discerption                                                  |
+| :----- | :----------------------------------------------------------- |
+| -a     | all                                                          |
+| -d     | detach: run a command in the background and make the terminal available for other commands |
+| -f     | force remove                                                 |
+| -p     | publish                                                      |
+| -q     |                                                              |
+| -t     | tag                                                          |
+| -v     | volume                                                       |
+| --it   |                                                              |
+| --name |                                                              |
+| --help | help: gives a detailed description of a specific command     |
+|        |                                                              |
 
 #### General commands
 
@@ -173,11 +173,157 @@ For instance, I will push the previously downloaded hello-world image to  my pub
 
 #### Container commands
 
-`docker container run` commands:  run command enables the user to create new container from a certain image, there multiple option when 
+`docker container run` commands:  run command enables the user to create new container from a certain image. there are multiple options that can be specified when creating new container, however, the main structure of the command is as follow:
+
+```
+docker container run <image-name>
+```
+
+applying the previous command (as is) will enforce docker to create and start new container with auto-generated name as shown in the following example with `nginx` image:
+
+```
+docker container run nginx
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker run autogen -name.jpg" alt="docker run autogen -name" style="zoom: 67%;" />
+
+you can observe that docker randomly assigned `xenodochial_hamilton` . And thus, to create a new container with specific name or to create multiple containers from the same image with different names :
+
+```
+docker container run <container-name> <image-name>
+```
+
+As an example, I will create 2 container from `nginx` image with different names as follow
+
+```
+dcoker container run --name foo nginx
+```
+
+```
+docker container run --name bar nginx
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker run --name.jpg" alt="docker run --name" style="zoom: 67%;" />
+
+Another option is to run a new container and remove it directly after it stopped is achieved by applying the following command:
+
+```
+docker container run --rm <image-name>
+```
+
+As an example, I will apply the previous command with `nginx` image as follow:
+
+```
+docker container run --rm nginx
+```
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker run auto remove.jpg" alt="docker run auto remove" style="zoom:67%;" />
+
+As you can observe, once the container stopped, it has been directly removed .
+
+Some containers are designed to be created, perform specific task and then stop. A clear example of such containers is `python` container. to keep it running after creation, this command can help:
+
+```
+docker container run -td <image-name>
+```
+
+As an example, assuming that python image is already pulled to your local machine which is satisfied in my case:
+
+```
+docker container run -td python 
+```
+
+Expected output:
+
+<img src="C:\Users\DELL\Desktop\Docker photo\docker run keep.jpg" alt="docker run keep"  />
+
+As you can observe that in the first run the container created and exited directly, while in the second run it is created and kept running.
+
+An additional useful run command, is to start a new container and apply a specific command inside it, in case it allows for this manner, this can be achieved by running a container in the interactive mode according to the following structure:
+
+```
+docker container run -it <image-name>
+```
+
+A good example of this is running a container interactively from python image which allow you to run python commands directly after creation as follow:
+
+```
+docker container run -it python 
+```
+
+Expected output:
+
+![docker run interactive](C:\Users\DELL\Desktop\Docker photo\docker run interactive.jpg)
+
+Ultimately, sometimes we need to define a port in the container to be known by our local machine to allow us reach it using the web browser, this can be achieved by the following structure:
+
+```
+docker container run -d -p port:port <image-name>
+```
+
+As an example, applying such run command on `nginx` image will publish the specified port 80 to be known  by our local machine as a way to reach it through the web browser as follow:
+
+```
+docker container run -d -p 80:80 nginx
+```
+
+Thus the container can be reached by typing [localhost:80](localhost:80) in the browser.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container ls` commands: `ls` command is identical to `ps` and have the same format .
+
+for active container :
+
+```
+docker container ls
+```
+
+for all containers:
+
+```
+docker container ls -a
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container rm` commands: `rm` command enables the user to delete created container. there are multiple options that can be specified when deleting container as follow:
+
+removing one or more containers:
+
+```
+docker container rm <container-name1> <container-name2> ... <container-name_n> 
+```
+
+Force stop a container in case it is running and remove it:
+
+```
+docker rm -f <container-name>
+```
+
+Force stop all containers in case they are  running and remove them:
+
+```
+docker rm -f $(docker ps -a -q)
+```
+
+Remove all stopped containers 
+
+```
+docker rm $(docker ps -q -f “status=exited”)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 #### Volumes Commands
 
-
+qwdwd
 
 #### Network Commands
 
