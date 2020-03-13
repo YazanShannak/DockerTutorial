@@ -275,6 +275,10 @@ Thus the container can be reached by typing [localhost:80](localhost:80) in the 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+up to this point, we assume you gained a good knowledge with docker, so that, the upcoming sections will be described without examples. For now, your job is to start applying each of the upcoming commands by yourself. bear in mind that "Practice makes perfect"
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 `docker container ls` commands: `ls` command is identical to `ps` and have the same format .
 
 for active container :
@@ -296,7 +300,7 @@ docker container ls -a
 removing one or more containers:
 
 ```
-docker container rm <container-name1> <container-name2> ... <container-name_n> 
+docker container rm <container-name_1> <container-name_2> ... <container-name_n> 
 ```
 
 Force stop a container in case it is running and remove it:
@@ -318,6 +322,44 @@ docker rm $(docker ps -q -f “status=exited”)
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`container lifecycle` commands:  life cycle commands enable the user to manage the operation status of Docker containers and include:
+
+create but do not start:
+
+```
+docker container create <image-name>
+```
+
+Stop a running container
+
+```
+docker container stop <container-name>
+```
+
+Start a stopped container 
+
+```
+docker container start <container-name>
+```
+
+Restart a running container :
+
+```
+docker container restart <container-name>
+```
+
+Pause a running container:
+
+```
+docker container pause <container-name>
+```
+
+Resume a paused container :
+
+```
+docker container unpause <container-name>
+```
 
 
 
