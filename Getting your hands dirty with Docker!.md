@@ -20,7 +20,26 @@ docker run hello-world
 
 docker run command start a new container from a certain image. If the image is not available locally  on your machine, docker will automatically download it from docker HUB and start a new container from the image once it has been downloaded. Don't worry about that, we will delve deeper into the details later on. For Now, it is expected to see the following output on your terminal:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\hello-world.jpg" style="zoom:67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete                                                                Digest: sha256:f9dfddf63636d84ef479d645ab5885156ae030f611a56f3a7ac7f2fdd86d7e4e
+Status: Downloaded newer image for hello-world:latest
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.(amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+```
 
 Congratulations!! you have just downloaded your first image and created your first container. Good Job.
 
@@ -79,7 +98,37 @@ docker -v
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker version command.jpg" alt="docker version command" style="zoom: 50%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker version
+Client: Docker Engine - Community
+ Version:           19.03.8
+ API version:       1.40
+ Go version:        go1.12.17
+ Git commit:        afacb8b
+ Built:             Wed Mar 11 01:23:10 2020
+ OS/Arch:           windows/amd64
+ Experimental:      false
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.8
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.17
+  Git commit:       afacb8b
+  Built:            Wed Mar 11 01:29:16 2020
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          v1.2.13
+  GitCommit:        7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc:
+  Version:          1.0.0-rc10
+  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+```
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -95,7 +144,16 @@ docker ps-a
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker ps.jpg" alt="docker ps" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker ps
+CONTAINER ID  IMAGE		COMMAND		CREATED		STATUS		PORTS			NAMES
+
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker ps -a
+CONTAINER ID	IMAGE		COMMAND		CREATED		STATUS		PORTS		NAMES
+668b8cf2bc59 hello-world  "/hello"  5 minutes ago  Exited (0)            focused_yonath
+```
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -107,7 +165,62 @@ docker info
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker info.jpg" alt="docker info" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 38
+ Server Version: 19.03.8
+ Storage Driver: overlay2
+  Backing Filesystem: <unknown>
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc version: dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ init version: fec3683
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 4.19.76-linuxkit
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 1.943GiB
+ Name: docker-desktop
+ ID: QOOD:VQ3W:HZ2T:BPD6:BYCO:Q7OX:MRAD:OINU:BRID:6A3L:IV4F:MCY2
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: true
+  File Descriptors: 36
+  Goroutines: 53
+  System Time: 2020-03-14T10:34:31.539918336Z
+  EventsListeners: 3
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+ Product License: Community Engine
+```
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -119,7 +232,17 @@ docker Stats
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker stats.jpg" alt="docker stats" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker stats
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
+b621c883dea9        resourcemanager     0.07%               315.9MiB / 1.943GiB   15.88%              34kB / 23.5kB       0B / 0B             230
+58efd121c839        nodemanager1        0.05%               209.1MiB / 1.943GiB   10.51%              8.5kB / 20.9kB      0B / 0B             79
+13d873dd13b4        historyserver       0.12%               181.2MiB / 1.943GiB   9.11%               1.84kB / 164B       0B / 0B             46
+8b8e7fcd64f0        datanode1           0.11%               187.2MiB / 1.943GiB   9.41%               12.6kB / 22.5kB     0B / 0B             52
+975aec01391f        datanode3           0.04%               188.2MiB / 1.943GiB   9.46%               12.7kB / 22.5kB     0B / 0B             52
+3032f548cfe5        datanode2           0.04%               211.3MiB / 1.943GiB   10.62%              13.7kB / 23.3kB     0B / 0B             52
+4f6eddd41e8a        namenode            0.04%               196.2MiB / 1.943GiB   9.86%               62kB / 20.9kB       0B / 0B             56
+```
 
 To obtain the stats of a specific container:
 
@@ -151,7 +274,14 @@ docker pull image hello-world:latest
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\doker pull.jpg" alt="doker pull" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker image pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+Digest: sha256:f9dfddf63636d84ef479d645ab5885156ae030f611a56f3a7ac7f2fdd86d7e4e
+Status: Image is up to date for hello-world:latest
+docker.io/library/hello-world:latest
+```
 
 note that docker will look for the image on your local machine if it is not available, docker will download it directly from `docker HUB`. Further, the `tag` keyword represents the version of the image you are going to download. Image name and tag can be directly obtained from docker HUB. 
 
