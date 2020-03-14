@@ -80,6 +80,7 @@ Flags are not docker commands, but they play an important role in controlling th
 | -it    | interactive: perform command in the interactive mode         |
 | --name | name: set a user-defined name to a certain docker component  |
 | --help | help: gives a detailed description of a specific command     |
+| --net  | network: assign certain network to a container               |
 
 #### General commands
 
@@ -653,7 +654,17 @@ docker network disconnect <network-name> <container-name>
 docker network create <network-name> 
 ```
 
+to specify the type of the created network {bridge,host,null, overlay,macvlan}:
 
+```
+docker network create -d <network-type> <network-name>
+```
+
+To start up a container and add it to a specific network:
+
+```
+docker run -it --net=<network-name> --name <container-name> <image-name>
+```
 
 `docker network inspect` command: return a detailed information about certain network such as creation date, driver directory, name according to the following structure:
 
