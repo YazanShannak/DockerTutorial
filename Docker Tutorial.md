@@ -379,7 +379,7 @@ Up to this point,  a large proportion of the theoretical part of Docker technolo
 
 - [x] Add commands table (this needs to be descried thoroughly in a hands-on example  )
 
-- [ ] Add A complete hands-on example that clarify the previous listed command in the tables (saeed)
+- [x] Add A complete hands-on example that clarify the previous listed command in the tables (saeed)
 
 - [ ] Add examples for multiple types of images ( can be created easily after the hands-on example) (saeed)
 

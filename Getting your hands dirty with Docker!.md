@@ -389,13 +389,9 @@ Consequently, a `born again shell` (bash) terminal will be opened to allow you a
 
 #### Volumes Commands
 
-qwdwd
+
 
 #### Network Commands
-
-
-
-#### Registry Commands
 
 
 
