@@ -588,6 +588,42 @@ Consequently, a `born again shell` (bash) terminal will be opened to allow you a
 docker volume create <volume-name>
 ```
 
+to create volume with specific name:
+
+```
+docker volume create --name <volume-name>
+```
+
+`docker volume inspect` command: return a detailed information about certain volume such as creation date, driver directory, name according to the following structure:
+
+```
+docker volume inspect <volume-name>
+```
+
+To directly return the volume directory :
+
+```
+docker volume inspect -f "{{json .Mountpoint}}" <volume-name>
+```
+
+`docker volume ls` command: list all created volumes according to the following structure:
+
+```
+docker volume ls
+```
+
+  `docker volume prune` command: remove all unused volumes according to the following structure:
+
+```
+`docker volume prune
+```
+
+`docker volume rm` command: remove one or more volumes according to the following structure:
+
+```
+docker volume rm <volume-name>
+```
+
 
 
 #### Network Commands
