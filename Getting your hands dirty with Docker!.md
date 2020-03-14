@@ -693,5 +693,4 @@ docker network rm <network-name>
 
 ### Docker Instruction Commands
 
-Docker instruction commands are the building blocks of dockerfiles, these instructions specify the roadmap for docker to build an image out of dockerfile
-
+Docker instruction commands are the building blocks of dockerfiles, these instructions specify the roadmap for docker to build an image out of dockerfile. In this section we are going to describe each instruction command in a detailed manner, following that we are going to give hands-on example on how to prepare a dockerfile to build your first image.
