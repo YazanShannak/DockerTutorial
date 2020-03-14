@@ -36,7 +36,7 @@ In a detailed manner , Docker is a new open source Container-Based technology th
 
 ### Docker Vs Virtual Machines:
 
-![](H:\DockerTutorial\Images\Docker-vs-VM..jpg)
+![](./assets/Docker-vs-VM..jpg)
 
 Virtual machines are more resource-intensive than Docker containers as the virtual machines need to load the entire OS to start. The lightweight architecture of Docker containers is less resource-intensive than virtual machines. 
 
@@ -229,7 +229,7 @@ For more information visit this link: [Docker for Windows](https://docs.docker.c
 
 docker Is a template or blueprint that contains all the data and metadata needed to run the containers which are launched from a certain image. You can think of it as Class in OOP, the image is comprised of a layers, each layer is a set of filesystem changes and has a unique ID upon its creation. Further, Docker image is immutable (Read-only template), the following figure descries Docker Image architecture:  
 
-<img src=".\Images\Docker-Image-Structure.jpeg" style="zoom:33%;" />
+<img src="./assets/Docker-Image-Structure.jpeg" style="zoom:33%;" />
 
 ### Basic Docker image Commands
 
@@ -253,7 +253,7 @@ For more information visit this link: [Docker Image](https://docs.docker.com/eng
 
 Docker containers are created from docker images , you can think of it as a class instance in OOP. It differs from Docker image in creating a writable layer on the top of docker image that enables the user to commit changes on the on containerized image and create a new image out of it. Further it is also possible to have several running  containers from the same image, each of the running containers is an isolated and secure application environment, the following figure descries Docker Image architecture:
 
-<img src="./Images/Docker-Container-Structure.jpeg" style="zoom:33%;" />
+<img src="./assets/Docker-Container-Structure.jpeg" style="zoom:33%;" />
 
 ### Basic Docker container commands
 
@@ -394,12 +394,11 @@ For more information visit this link: [Docker registry Docs](https://docs.docker
 
 ### What is Dockerfile:
 
-simply, Dockerfile is the image creation recipe. More technically, Dockerfile is a text based file (script) that includes all commands you would normally execute manually in order to build a docker image, these commands are called dockerfile instructions. dockerfiles are always aligned on any base image and enables docker daemons to build images automatically by reading the instructions from Dockerfile.
+Simply, Dockerfile is the image creation recipe. More technically, Dockerfile is a text based file (script) that includes all commands you would normally execute manually in order to build a docker image, these commands are called Dockerfile instructions. Dockerfiles are always aligned on any base image and enables docker daemons to build images automatically by reading the instructions from Dockerfile.
 
 ### Dockerfile Instructions:
 
 Dockerfiles instruction are the blueprint for creating a docker image, there are 19 command to perform in a DockerFile as shown in the table bellow but it is not necessarily  to use them in every Dockerfile, it depends on your need:
-
 | Instruction | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
 | FROM        | Define the base image to start building image on top of it.  |
@@ -433,36 +432,8 @@ Up to this point,  a large proportion of the theoretical part of Docker technolo
 
 We wish you all the best
 
-Eng. Yazan Shannk
+Yazan Shannak
 
-Eng. Saeed Shurrab
+Saeed Shurrab
 
-## Todo 
 
-- [x] Introduction
-
-- [x] Add installation section (Windows, Linux)
-
-- [ ] Check the installation Steps for Linux (Yazan)
-
-- [x] Images and Containers sections
-
-- [x] Add section on Docker hub and registry 
-
-- [x] Add basic commands section ( has been included briefly in image and container section )
-
-- [x] Add commands table (this needs to be descried thoroughly in a hands-on example  )
-
-- [x] Add A complete hands-on example that clarify the previous listed command in the tables (saeed)
-
-- [x] Add examples for multiple types of images ( can be created easily after the hands-on example) (saeed)
-
-- [x] create a theoretical  about dockerfiles (saeed)
-
-- [x] Add a hands-on example on  docker file creation (Yazan)
-
-- [x] Add `for more information links` directed toward the original documentation in each section 
-
-  
-  
-  
