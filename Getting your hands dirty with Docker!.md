@@ -70,15 +70,15 @@ Flags are not docker commands, but they play an important role in controlling th
 
 | Flag   | Discerption                                                  |
 | :----- | :----------------------------------------------------------- |
-| -a     | all                                                          |
+| -a     | all: list all items for a certain docker component           |
 | -d     | detach: run a command in the background and make the terminal available for other commands |
-| -f     | force remove                                                 |
-| -p     | publish                                                      |
+| -f     | force : force command to be performed.                       |
+| -p     | publish:                                                     |
 | -q     |                                                              |
 | -t     | tag                                                          |
 | -v     | volume                                                       |
-| --it   |                                                              |
-| --name |                                                              |
+| -it    | interactive: perform command in the interactive mode         |
+| --name | name: set a user-defined name to a certain docker component  |
 | --help | help: gives a detailed description of a specific command     |
 |        |                                                              |
 
@@ -146,11 +146,12 @@ Expected output:
 
 ```
 PS C:\Users\DELL\Desktop\docker-hadoop-master> docker ps
-CONTAINER ID  IMAGE		COMMAND		CREATED		STATUS		PORTS			NAMES
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
 
 PS C:\Users\DELL\Desktop\docker-hadoop-master> docker ps -a
-CONTAINER ID	IMAGE		COMMAND		CREATED		STATUS		PORTS		NAMES
-668b8cf2bc59 hello-world  "/hello"  5 minutes ago  Exited (0)            focused_yonath
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+668b8cf2bc59        hello-world         "/hello"            5 minutes ago       Exited (0) 5 minutes ago                       focused_yonath
 ```
 
 
@@ -317,18 +318,24 @@ docker container run nginx
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker run autogen -name.jpg" alt="docker run autogen -name" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run nginx
 
-you can observe that docker randomly assigned `xenodochial_hamilton` . And thus, to create a new container with specific name or to create multiple containers from the same image with different names :
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   28 seconds ago      Up 25 seconds       80/tcp              hungry_galileo
+```
+
+you can observe that docker randomly assigned `hungry_galileo` . And thus, to create a new container with specific name or to create multiple containers from the same image with different names :
 
 ```
-docker container run <container-name> <image-name>
+docker container run --name <container-name> <image-name>
 ```
 
 As an example, I will create 2 container from `nginx` image with different names as follow
 
 ```
-dcoker container run --name foo nginx
+docker container run --name foo nginx
 ```
 
 ```
@@ -337,7 +344,15 @@ docker container run --name bar nginx
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker run --name.jpg" alt="docker run --name" style="zoom: 67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --name foo nginx
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --name bar nginx
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+be940a8e8cd7        nginx               "nginx -g 'daemon of…"   16 seconds ago      Up 14 seconds       80/tcp              bar
+cf054af93659        nginx               "nginx -g 'daemon of…"   36 seconds ago      Up 34 seconds       80/tcp              foo
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   3 minutes ago       Up 3 minutes        80/tcp              hungry_galileo
+```
 
 Another option is to run a new container and remove it directly after it stopped is achieved by applying the following command:
 
@@ -351,7 +366,23 @@ As an example, I will apply the previous command with `nginx` image as follow:
 docker container run --rm nginx
 ```
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker run auto remove.jpg" alt="docker run auto remove" style="zoom:67%;" />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --rm nginx
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+05b3801ee3f7        nginx               "nginx -g 'daemon of…"   14 seconds ago      Up 12 seconds       80/tcp              admiring_agnesi
+be940a8e8cd7        nginx               "nginx -g 'daemon of…"   2 minutes ago       Up 2 minutes        80/tcp              bar
+cf054af93659        nginx               "nginx -g 'daemon of…"   2 minutes ago       Up 2 minutes        80/tcp              foo
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   5 minutes ago       Up 5 minutes        80/tcp              hungry_galileo
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container stop admiring_agnesi
+admiring_agnesi
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+be940a8e8cd7        nginx               "nginx -g 'daemon of…"   3 minutes ago       Up 3 minutes                80/tcp              bar
+cf054af93659        nginx               "nginx -g 'daemon of…"   3 minutes ago       Up 3 minutes                80/tcp              foo
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   6 minutes ago       Up 6 minutes                80/tcp              hungry_galileo
+668b8cf2bc59        hello-world         "/hello"                 31 minutes ago      Exited (0) 31 minutes ago                       focused_yonath
+```
 
 As you can observe, once the container stopped, it has been directly removed .
 
@@ -369,7 +400,22 @@ docker container run -td python
 
 Expected output:
 
-<img src="C:\Users\DELL\Desktop\Docker photo\docker run keep.jpg" alt="docker run keep"  />
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker run python
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+be940a8e8cd7        nginx               "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        80/tcp              bar
+cf054af93659        nginx               "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        80/tcp              foo
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   10 minutes ago      Up 10 minutes       80/tcp              hungry_galileo
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run -td python
+99e70b02d833c10c9ae5a5e28e6fb47a910bc4861c5320b017b9654c3c1d392e
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+99e70b02d833        python              "python3"                7 seconds ago       Up 5 seconds                            gifted_perlman
+be940a8e8cd7        nginx               "nginx -g 'daemon of…"   8 minutes ago       Up 8 minutes        80/tcp              bar
+cf054af93659        nginx               "nginx -g 'daemon of…"   8 minutes ago       Up 8 minutes        80/tcp              foo
+21fd4052f73f        nginx               "nginx -g 'daemon of…"   11 minutes ago      Up 11 minutes       80/tcp              hungry_galileo
+```
 
 As you can observe that in the first run the container created and exited directly, while in the second run it is created and kept running.
 
@@ -387,7 +433,16 @@ docker container run -it python
 
 Expected output:
 
-![docker run interactive](C:\Users\DELL\Desktop\Docker photo\docker run interactive.jpg)
+```
+PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run -it python
+Python 3.8.2 (default, Feb 26 2020, 14:58:38)
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 5+6
+11
+>>> print('the great docker')
+the great docker
+```
 
 Ultimately, sometimes we need to define a port in the container to be known by our local machine to allow us reach it using the web browser, this can be achieved by the following structure:
 
@@ -453,7 +508,7 @@ docker rm $(docker ps -q -f “status=exited”)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`docker container prune` command: prone command allows docker to search for unused container and remove them according to the following structure:
+`docker container prune` command: prune command allows docker to search for unused container and remove them according to the following structure:
 
 ```
 docker container prune <container-name>
@@ -526,6 +581,12 @@ docker container exec -it <container-name> bash
 Consequently, a `born again shell` (bash) terminal will be opened to allow you apply your commands inside the container while keeping it running once you exit the bash.
 
 #### Volumes Commands
+
+`docker volume create` command: create command allows user to establish new container according to the following structure:
+
+```
+docker volume create <volume-name>
+```
 
 
 
