@@ -6,7 +6,7 @@
 
 ## Intro
 
-this section is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands. You can reach the tutorial from the following [link](addlink).
+this section is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands. You can reach the tutorial from the following [link]([https://github.com/YazanShannak/DockerTutorial/blob/master/Docker%20Tutorial.md](https://github.com/YazanShannak/DockerTutorial/blob/master/Docker Tutorial.md)).
 
 To start with docker, make sure that docker is already running on your machine after installation. If it is not running , just run it according to your operating system and wait until it prompt you that Docker is running. following that, open `Windows PowerShell` in case you are using `Microsoft Windows` by searching it in `Start Menu`. Alternatively, if you are using  `Linux-based OS`, just Start a new `Terminal window` and let us start playing with docker:
 
@@ -319,6 +319,14 @@ Remove all stopped containers
 
 ```
 docker rm $(docker ps -q -f “status=exited”)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container prune` command: prone command allows docker to search for unused container and remove them according to the following structure:
+
+```
+docker container prune <container-name>
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------

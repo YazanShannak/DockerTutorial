@@ -255,7 +255,7 @@ Docker containers are created from docker images , you can think of it as a clas
 
 <img src="./Images/Docker-Container-Structure.jpeg" style="zoom:33%;" />
 
-### Basic Docker container command
+### Basic Docker container commands
 
 | Command        | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
@@ -268,15 +268,75 @@ Docker containers are created from docker images , you can think of it as a clas
 | docker kill    | Kill a running container.                                    |
 | docker attach  | Attach/connect to a running container.                       |
 | Docker exec    | Perform commands in a running container.                     |
-| docker ps      | Show all running containers                                  |
-| docker logs    | Display the logs of certain container                        |
-| docker inspect | Return a low-level information about certain container       |
-| docker top     | Display the running processes of a container                 |
-| docker port    | List port mappings or a specific mapping for the container   |
-| docker stats   | Display a live stream of a container's resource usage statistics |
-| docker diff    | Inspect changes on a container's filesystem                  |
+| docker ps      | Show all running containers.                                 |
+| docker logs    | Display the logs of certain container.                       |
+| docker inspect | Return a low-level information about certain container.      |
+| docker top     | Display the running processes of a container.                |
+| docker port    | List port mappings or a specific mapping for the container.  |
+| docker stats   | Display a live stream of a container's resource usage statistics. |
+| docker diff    | Inspect changes on a container's filesystem.                 |
 
 For more information visit this link: [Docker Containers](https://docs.docker.com/engine/reference/commandline/container/)
+
+## Docker Network
+
+### What is Docker Network?
+
+Docker network is a connection and communication way between docker containers and the outside world via host machine. Alternatively, it is a communication passage through which all isolated containers communicate with each other in various situations to perform the required actions. 
+
+### Docker Network Types
+
+1. **Bridge Network:** 
+
+   When you start Docker, a default bridge network is created automatically. A newly-started containers will connect automatically to it. You can also create user-defined custom bridge networks. User-defined bridge networks are superior to the default bridge network.
+
+2. **Host Network:** 
+
+   Host network remove network isolation between the container and the Docker host, and use the host’s networking directly. If you run a container which binds to port 80 and you use host networking, the container’s application is available on port 80 on the host’s IP address. Means you will not be able to run multiple web containers on the same host, on the same port as the port is now common to all containers in the host network.
+
+3. **Overlay network :** 
+
+   Creates an internal private network that spans across all the nodes participating in the swarm cluster. So, Overlay networks facilitate communication between a docker swarm service and a standalone container, or between two standalone containers on different Docker Daemons.
+
+4. **Macvlan network :** 
+
+   Some applications, especially legacy applications or applications which monitor network traffic, expect to be directly connected to the physical network. In this type of situation, you can use the Macvlan network driver to assign a MAC address to each container’s virtual network interface, making it appear to be a physical network interface directly connected to the physical network.
+
+5. **None Network :** 
+
+   In this kind of network, containers are not attached to any network and do not have any access to the external network or other containers. So, this network is used when you want to completely disable the networking stack on a container.
+
+### Basic Docker network commands
+
+| Command           | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| docker connect    | Connect a container to a network.                     |
+| docker create     | Create a new network.                                 |
+| docker disconnect | Disconnect a container from a network.                |
+| docker inspect    | Display detailed information on one or more networks. |
+| docker ls         | List all networks.                                    |
+| docker prune      | Remove unused networks.                               |
+| docker rm         | Remove one or more network.                           |
+
+For more information visit this link: [Docker Network](https://docs.docker.com/network/)
+
+## Docker Volumes
+
+### What is Docker Volume?
+
+Docker volumes are directories or filesystem that exist outside the containers  with main purpose of persisting the container data. the main role of the volumes is to store the changes that happen inside a container due to various operations on your local to be readily available in case the container has been removed. 
+
+### Basic Docker volume commands
+
+| Command        | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| docker create  | Create a new volume                                  |
+| docker inspect | Display detailed information on one or more volumes. |
+| docker ls      | List all volumes.                                    |
+| docker prune   | Remove unused volumes.                               |
+| docker rm      | Remove on or more volumes.                           |
+
+For more information visit this link: [Docker volume](https://docs.docker.com/storage/volumes/)
 
 ## Docker HUB
 
@@ -362,6 +422,14 @@ For more information visit this link: [Dockerfile Docs](https://docs.docker.com/
 ## Conclusion
 
 Up to this point,  a large proportion of the theoretical part of Docker technology has been covered, such brief introduction enables the reader to have a clear idea about docker as well as its related issues  and concepts. In cases there is a need for extra information and further reading, a Docker documentation link is provided at the end of each section that route you directly toward the documentation provided by docker for the same topic. An extra hands-on example on how to use docker commands is provided [here]
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+We wish you all the best
+
+Eng. Yazan Shannk
+
+Eng. Saeed Shurrab
 
 ## Todo 
 
