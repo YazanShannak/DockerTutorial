@@ -6,7 +6,7 @@
 
 ## Intro
 
-this tutorial is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands. You can reach the tutorial from the following [link]([https://github.com/YazanShannak/DockerTutorial/blob/master/Docker%20Tutorial.md](https://github.com/YazanShannak/DockerTutorial/blob/master/Docker Tutorial.md)).
+this tutorial is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands.
 
 To start with docker, make sure that docker is already running on your machine after installation. If it is not running , just run it according to your operating system and wait until it prompt you that Docker is running. following that, open `Windows PowerShell` in case you are using `Microsoft Windows` by searching it in `Start Menu`. Alternatively, if you are using  `Linux-based OS`, just Start a new `Terminal window` and let us start playing with docker:
 
@@ -691,6 +691,7 @@ docker network rm <network-name>
 
 
 
-### Docker Instruction Commands
+## Conclusion
 
-Docker instruction commands are the building blocks of dockerfiles, these instructions specify the roadmap for docker to build an image out of dockerfile. In this section we are going to describe each instruction command in a detailed manner, following that we are going to give hands-on example on how to prepare a dockerfile to build your first image.
+Up to this point, you have been armed with a wide range of docker command that enables you to start your journey with Docker. Bear in mind that practice makes perfect, so that do not stop practicing. In the next tutorial we will proceed with you toward docker instruction commands and dockerfiles to gain a hands-on experience on how to build your custom docker image.
+
