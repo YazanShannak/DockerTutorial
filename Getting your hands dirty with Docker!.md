@@ -73,14 +73,13 @@ Flags are not docker commands, but they play an important role in controlling th
 | -a     | all: list all items for a certain docker component           |
 | -d     | detach: run a command in the background and make the terminal available for other commands |
 | -f     | force : force command to be performed.                       |
-| -p     | publish:                                                     |
+| -p     | publish:  explicitly express a port in a network             |
 | -q     |                                                              |
 | -t     | tag                                                          |
-| -v     | volume                                                       |
+| -v     | volume: mount volume to a container upon creation            |
 | -it    | interactive: perform command in the interactive mode         |
 | --name | name: set a user-defined name to a certain docker component  |
 | --help | help: gives a detailed description of a specific command     |
-|        |                                                              |
 
 #### General commands
 
@@ -580,6 +579,8 @@ docker container exec -it <container-name> bash
 
 Consequently, a `born again shell` (bash) terminal will be opened to allow you apply your commands inside the container while keeping it running once you exit the bash.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### Volumes Commands
 
 `docker volume create` command: create command allows user to establish new container according to the following structure:
@@ -624,9 +625,59 @@ docker volume ls
 docker volume rm <volume-name>
 ```
 
+to assign previously created volume to a container on starting:
 
+```
+docker run -it --name <container-name> -v <volume-name> <image-name>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Network Commands
+
+`docker network connect` command: connect a container to a specific network according to the following structure:
+
+```
+docker network connect <network-name> <container-name>
+```
+
+`docker network disconnect` command: disconnect a container from a specific network according to the following structure:
+
+```
+docker network disconnect <network-name> <container-name>
+```
+
+`docker network create` command: create a new network according to the following structure:
+
+```
+docker network create <network-name> 
+```
+
+
+
+`docker network inspect` command: return a detailed information about certain network such as creation date, driver directory, name according to the following structure:
+
+```
+docker network inspect <network-name>
+```
+
+`docker network ls` command: list all created networks according to the following structure:
+
+```
+docker network ls
+```
+
+  `docker network prune` command: remove all unused networks according to the following structure:
+
+```
+`docker network prune
+```
+
+`docker network rm` command: remove one or more networks according to the following structure:
+
+```
+docker network rm <network-name>
+```
 
 
 
