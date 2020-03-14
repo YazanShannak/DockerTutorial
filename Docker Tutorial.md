@@ -398,7 +398,7 @@ simply, Dockerfile is the image creation recipe. More technically, Dockerfile is
 
 ### Dockerfile Instructions:
 
-Dockerfiles instruction are the blueprint for creating a docker image, there are 13 command to perform in a DockerFile as shown in the table bellow but it is not necessarily  to use them ain every Dockerfile, it depends on your need:
+Dockerfiles instruction are the blueprint for creating a docker image, there are 19 command to perform in a DockerFile as shown in the table bellow but it is not necessarily  to use them in every Dockerfile, it depends on your need:
 
 | Instruction | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
@@ -409,11 +409,17 @@ Dockerfiles instruction are the blueprint for creating a docker image, there are
 | CMD         | Provide defaults for an executing containers.                |
 | EXPOSE      | Used to associate a specified port to enable networking between the running process inside the container and the host |
 | ADD         | copy new files, directories, or remote file to the container. Not highly recommended instruction because it invalidates the cache. |
+| LABEL       | add metadata to an image                                     |
 | COPY        | Copy New files or directories to container.                  |
 | ENTRYPOINT  | Configure a new that will run as an executable.              |
 | VOLUME      | Used to enable access from your container to a directory on the host machine. |
 | USER        | Set the username for the following commands : RUN, CMD and ENTRYPOINT. |
 | WORKDIR     | Set the working directory                                    |
+| ARG         | Defines a variable that users can pass at build-time to the builder with the `docker build` command |
+| ONBUILD     | Adds an instruction to be executed later, when the image is used as the base for another build |
+| STOPSIGNAL  | Sets the system call signal that will be sent to the container to exit |
+| HEALTHCHECK | Tells Docker how to test a container to check that it is still working |
+| SHELL       | Allows the default shell used for the shell form of commands to be overridden. |
 
 The previous table may somehow vague or ambiguous to draw a complete picture about the Dockerfiles. For this Reason, there will be a complete example on how to create a Dockerfile.
 
@@ -449,11 +455,11 @@ Eng. Saeed Shurrab
 
 - [x] Add A complete hands-on example that clarify the previous listed command in the tables (saeed)
 
-- [ ] Add examples for multiple types of images ( can be created easily after the hands-on example) (saeed)
+- [x] Add examples for multiple types of images ( can be created easily after the hands-on example) (saeed)
 
 - [x] create a theoretical  about dockerfiles (saeed)
 
-- [ ] Add a hands-on example on  docker file creation (Yazan)
+- [x] Add a hands-on example on  docker file creation (Yazan)
 
 - [x] Add `for more information links` directed toward the original documentation in each section 
 

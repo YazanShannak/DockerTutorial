@@ -6,7 +6,7 @@
 
 ## Intro
 
-this section is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands. You can reach the tutorial from the following [link]([https://github.com/YazanShannak/DockerTutorial/blob/master/Docker%20Tutorial.md](https://github.com/YazanShannak/DockerTutorial/blob/master/Docker Tutorial.md)).
+this tutorial is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands. You can reach the tutorial from the following [link]([https://github.com/YazanShannak/DockerTutorial/blob/master/Docker%20Tutorial.md](https://github.com/YazanShannak/DockerTutorial/blob/master/Docker Tutorial.md)).
 
 To start with docker, make sure that docker is already running on your machine after installation. If it is not running , just run it according to your operating system and wait until it prompt you that Docker is running. following that, open `Windows PowerShell` in case you are using `Microsoft Windows` by searching it in `Start Menu`. Alternatively, if you are using  `Linux-based OS`, just Start a new `Terminal window` and let us start playing with docker:
 
@@ -21,7 +21,7 @@ docker run hello-world
 docker run command start a new container from a certain image. If the image is not available locally  on your machine, docker will automatically download it from docker HUB and start a new container from the image once it has been downloaded. Don't worry about that, we will delve deeper into the details later on. For Now, it is expected to see the following output on your terminal:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker run hello-world
+PS C:\Users\DELL\Desktop> docker run hello-world
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 1b930d010525: Pull complete                                                                Digest: sha256:f9dfddf63636d84ef479d645ab5885156ae030f611a56f3a7ac7f2fdd86d7e4e
@@ -45,7 +45,7 @@ Congratulations!! you have just downloaded your first image and created your fir
 
 ## Docker Commands
 
-Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into seven categories including :
+Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into six categories including :
 
 1. Important flags 
 2. General commands
@@ -53,7 +53,6 @@ Basically, there are two types of Docker commands including`Command-Line Interfa
 4. Image commands
 5. Volume commands.
 6. Network commands
-7. Registry commands
 
 We will pass in a detailed manner through each category and provide a specific example to the most important commands in each category. it is worth noting that docker has a wide range commands that can not be covered in one tutorial so bear in that how much you practice, how much you gain experience and knowledge. One more thing to to mention before starting our journey is that docker provides a detailed description of its commands. So, in case you are stuck with a certain commands do not hesitate and feel free to ask Docker using the help command as follow: 
 
@@ -99,7 +98,7 @@ docker -v
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker version
+PS C:\Users\DELL\Desktop> docker version
 Client: Docker Engine - Community
  Version:           19.03.8
  API version:       1.40
@@ -145,7 +144,7 @@ docker ps-a
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker ps
+PS C:\Users\DELL\Desktop> docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
 
@@ -167,7 +166,7 @@ docker info
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker info
+PS C:\Users\DELL\Desktop> docker info
 Client:
  Debug Mode: false
 
@@ -234,7 +233,7 @@ docker Stats
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker stats
+PS C:\Users\DELL\Desktop> docker stats
 CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
 b621c883dea9        resourcemanager     0.07%               315.9MiB / 1.943GiB   15.88%              34kB / 23.5kB       0B / 0B             230
 58efd121c839        nodemanager1        0.05%               209.1MiB / 1.943GiB   10.51%              8.5kB / 20.9kB      0B / 0B             79
@@ -276,7 +275,7 @@ docker pull image hello-world:latest
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker image pull hello-world
+PS C:\Users\DELL\Desktop> docker image pull hello-world
 Using default tag: latest
 latest: Pulling from library/hello-world
 Digest: sha256:f9dfddf63636d84ef479d645ab5885156ae030f611a56f3a7ac7f2fdd86d7e4e
@@ -319,9 +318,9 @@ docker container run nginx
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run nginx
+PS C:\Users\DELL\Desktop> docker container run nginx
 
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+PS C:\Users\DELL\Desktop> docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 21fd4052f73f        nginx               "nginx -g 'daemon of…"   28 seconds ago      Up 25 seconds       80/tcp              hungry_galileo
 ```
@@ -345,9 +344,9 @@ docker container run --name bar nginx
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --name foo nginx
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --name bar nginx
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+PS C:\Users\DELL\Desktop> docker container run --name foo nginx
+PS C:\Users\DELL\Desktop> docker container run --name bar nginx
+PS C:\Users\DELL\Desktop> docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 be940a8e8cd7        nginx               "nginx -g 'daemon of…"   16 seconds ago      Up 14 seconds       80/tcp              bar
 cf054af93659        nginx               "nginx -g 'daemon of…"   36 seconds ago      Up 34 seconds       80/tcp              foo
@@ -367,8 +366,8 @@ docker container run --rm nginx
 ```
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run --rm nginx
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+PS C:\Users\DELL\Desktop> docker container run --rm nginx
+PS C:\Users\DELL\Desktop> docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 05b3801ee3f7        nginx               "nginx -g 'daemon of…"   14 seconds ago      Up 12 seconds       80/tcp              admiring_agnesi
 be940a8e8cd7        nginx               "nginx -g 'daemon of…"   2 minutes ago       Up 2 minutes        80/tcp              bar
@@ -401,15 +400,15 @@ docker container run -td python
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker run python
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+PS C:\Users\DELL\Desktop> docker run python
+PS C:\Users\DELL\Desktop> docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 be940a8e8cd7        nginx               "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        80/tcp              bar
 cf054af93659        nginx               "nginx -g 'daemon of…"   7 minutes ago       Up 7 minutes        80/tcp              foo
 21fd4052f73f        nginx               "nginx -g 'daemon of…"   10 minutes ago      Up 10 minutes       80/tcp              hungry_galileo
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run -td python
+PS C:\Users\DELL\Desktop> docker container run -td python
 99e70b02d833c10c9ae5a5e28e6fb47a910bc4861c5320b017b9654c3c1d392e
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container ls
+PS C:\Users\DELL\Desktop> docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 99e70b02d833        python              "python3"                7 seconds ago       Up 5 seconds                            gifted_perlman
 be940a8e8cd7        nginx               "nginx -g 'daemon of…"   8 minutes ago       Up 8 minutes        80/tcp              bar
@@ -434,7 +433,7 @@ docker container run -it python
 Expected output:
 
 ```
-PS C:\Users\DELL\Desktop\docker-hadoop-master> docker container run -it python
+PS C:\Users\DELL\Desktop> docker container run -it python
 Python 3.8.2 (default, Feb 26 2020, 14:58:38)
 [GCC 8.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -693,4 +692,6 @@ docker network rm <network-name>
 
 
 ### Docker Instruction Commands
+
+Docker instruction commands are the building blocks of dockerfiles, these instructions specify the roadmap for docker to build an image out of dockerfile
 
