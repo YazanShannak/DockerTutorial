@@ -30,7 +30,7 @@ In a detailed manner , Docker is a new open source Container-Based technology th
 ### Docker Benefits for DevOps:
 
 - Easier deploying and scaling.
-- Efficient management of applications lifecycle.
+- Efficient management of applications life cycle.
 - Light weight footprint: docker images are very small.
 - Simplified maintenance: by reducing efforts and risk of problems with applications dependencies.
 
@@ -49,8 +49,8 @@ Apart from the major differences, some other differences are summarized below:
 | Criteria          | Docker                                                       | Virtual Machines                                             |
 | :---------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Boot-Time         | Boots in a few seconds.                                      | It takes a few minutes for VMs to boot.                      |
-| Runs on           | Dockers make use of the execution engine.                    | VMs make use of the hypervisor.                              |
-| Memory Efficiency | No space is needed to virtualize, hence less memory.         | Requires entire OS to be loaded before starting the surface, so less efficient. |
+| Runs on           | Dockers make use of the existing kernel on Linux machines    | VMs make use of the hypervisor.                              |
+| Memory Efficiency | No space is needed to visualize, hence less memory.          | Requires entire OS to be loaded before starting the surface, so less efficient. |
 | Isolation         | Prone to adversities as no provisions for isolation systems. | Interference possibility is minimum because of the efficient isolation mechanism. |
 | Deployment        | Deploying is easy as only a single image, containerized can be used across all platforms. | Deployment is comparatively lengthy as separate instances are responsible for execution. |
 | Usage             | Docker has a complex usage mechanism consisting of both third party and docker managed tools. | Tools are easy to use and simpler to work with.              |
@@ -84,7 +84,7 @@ Docker is coming in two editions including:
 
   Docker-CE is for the developers and DevOps community. Each month docker releases an Edge version with latest features and in addition to quarterly releases with stable versions. it is available for the following operating systems:
 
-  1.  ubuntu
+  1.  Ubuntu
   2. Debian
   3. CentOS
   4. Windows 10
@@ -104,74 +104,10 @@ Docker engine is built on the top of Linux kernel, which means that docker runs 
 
 1. Installation Scripts provided by Docker community.
 2. Docker Package included in the official Linux distribution (but might not be the latest version).
-3. packages supplied by docker for any Linux distributions.
+3. Packages supplied by docker for any Linux distributions.
 4. Binary download from Docker repository.
 
-The first option is to use the script provided at [here](https://get.docker.com) to install Docker engine. This script will chick installation requirements, then install the Docker engine depending on your OS. The installation process will include some extra  dependencies required by Docker in case some they are missing 
-
-to use the script, use this command:
-
-```
-curl -s https://get.docker.com/ | sudo sh
-```
-
-For more information visit this link: [Docker for linux](https://docs.docker.com/install/)
-
-#### Docker-CE on CentOS 7.x or RHEL 7.x
-
--  Add the official Docker repository:
-
-  ```
-  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-
-- Install Docker Ce Engine:
-
-  ```
-  yum install docker-ce
-  ```
-
-- Configure the docker daemon to start automatically in case if it is not started automatically after installation:
-
-  ```
-  systemctl enable docker.service
-  systemctl start docker.service
-  ```
-
-  **Start enjoying Docker Services**
-
-For more information visit this link:  [Docker for CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
-
-#### Docker-CE on Ubuntu 16.04 LTS
-
-- Add the GPG key for Docker repository:
-
-  ```
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudu apt-key add-
-  ```
-
-- Add the official Docker repository :
-
-  ```
-  add-apt-repository "deb[arch=amd64] https://download.docker.com/linux/ubuntu/$(lsb_release -cs) stable"
-  ```
-
-- update the apt database and install Docker-CE Engine:
-
-  ```
-  apt-get update; apt-get -y install docker-ce
-  ```
-
-- Configure the docker daemon to start automatically in case if it is not started automatically after installation:
-
-  ```
-  systemctl enable docker.service
-  systemctl start docker.service
-  ```
-
-**Start enjoying Docker Services**
-
-For more information visit this link:
+To install Docker on a Linux distribution, please refer to the [official docs](https://docs.docker.com/install/linux/docker-ce/ubuntu/). 
 
 ### Docker for Microsoft Windows
 
@@ -183,7 +119,9 @@ Docker desktop for windows requires Microsoft Windows 10  professional or enterp
 
 - You will encounter 3 options during Docker installation: Tick just the first two options.
 
-- wait until the installation is completed and then restart your PC
+  - The third option is to use Windows as the host OS of Docker, this **IS NOT** recommended, since most images aren't supported on Windows based Docker
+
+- Wait until the installation is completed and then restart your PC
 
   **Start enjoying Docker Services**
 
@@ -227,23 +165,23 @@ For more information visit this link: [Docker for Windows](https://docs.docker.c
 
 ### What is docker image ?
 
-docker Is a template or blueprint that contains all the data and metadata needed to run the containers which are launched from a certain image. You can think of it as Class in OOP, the image is comprised of a layers, each layer is a set of filesystem changes and has a unique ID upon its creation. Further, Docker image is immutable (Read-only template), the following figure descries Docker Image architecture:  
+An image is a template or blueprint that contains all the data and metadata needed to run the containers which are launched from a certain image. You can think of it as Class in OOP, the image is comprised of a layers, each layer is a set of filesystem changes and has a unique ID upon its creation. Further, Docker image is immutable (Read-only template), the following figure descries Docker Image architecture:  
 
 <img src="./assets/Docker-Image-Structure.jpeg" style="zoom:33%;" />
 
 ### Basic Docker image Commands
 
-| Command        | Description                                                  |
-| -------------- | ------------------------------------------------------------ |
-| docker images  | List all available images.                                   |
-| docker build   | Build an image from a Dockerfile.                            |
-| docker commit  | Create a new image from a container's changes, pausing it temporarily if it is running. |
-| docker rmi     | Remove one or more image.                                    |
-| docker history | Show the history if an image.                                |
-| docker tag     | Tags an image into a repository.                             |
-| docker import  | Import the contents from a tarball to create file system image. |
-| docker export  | Export a container's file system as a tar archive.           |
-| docker search  | Search the docker hub for specific images.                   |
+| Command                 | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| docker image ls         | List all available images.                                   |
+| docker image build      | Build an image from a Dockerfile.                            |
+| docker container commit | Create a new image from a container's changes, pausing it temporarily if it is running. |
+| docker image rm         | Remove one or more image.                                    |
+| docker image history    | Show the history if an image.                                |
+| docker image tag        | Tags an image into a repository.                             |
+| docker image import     | Import the contents from a tarball to create file system image. |
+| docker image export     | Export a container's file system as a tar archive.           |
+| docker image search     | Search the docker hub for specific images.                   |
 
 For more information visit this link: [Docker Image](https://docs.docker.com/engine/reference/commandline/image/)
 
@@ -257,24 +195,24 @@ Docker containers are created from docker images , you can think of it as a clas
 
 ### Basic Docker container commands
 
-| Command        | Description                                                  |
-| -------------- | ------------------------------------------------------------ |
-| docker create  | Create a new command but do not start it                     |
-| Docker run     | Create and start a container in on shoot.                    |
-| docker rm      | Remove one or more containers                                |
-| docker start   | Start  one or more stopped containers                        |
-| docker stop    | Stop a running container                                     |
-| docker restart | Restart a running container                                  |
-| docker kill    | Kill a running container.                                    |
-| docker attach  | Attach/connect to a running container.                       |
-| Docker exec    | Perform commands in a running container.                     |
-| docker ps      | Show all running containers.                                 |
-| docker logs    | Display the logs of certain container.                       |
-| docker inspect | Return a low-level information about certain container.      |
-| docker top     | Display the running processes of a container.                |
-| docker port    | List port mappings or a specific mapping for the container.  |
-| docker stats   | Display a live stream of a container's resource usage statistics. |
-| docker diff    | Inspect changes on a container's filesystem.                 |
+| Command                  | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| docker container create  | Create a new command but do not start it                     |
+| docker container run     | Create and start a container in on shoot.                    |
+| docker container rm      | Remove one or more containers                                |
+| docker container start   | Start  one or more stopped containers                        |
+| docker container stop    | Stop a running container                                     |
+| docker container restart | Restart a running container                                  |
+| docker container kill    | Kill a running container.                                    |
+| docker container attach  | Attach/connect to a running container.                       |
+| Docker container exec    | Perform commands in a running container.                     |
+| docker container ps      | Show all running containers.                                 |
+| docker container logs    | Display the logs of certain container.                       |
+| docker container inspect | Return a low-level information about certain container.      |
+| docker container top     | Display the running processes of a container.                |
+| docker container port    | List port mappings or a specific mapping for the container.  |
+| docker container  stats  | Display a live stream of a container's resource usage statistics. |
+| docker container diff    | Inspect changes on a container's filesystem.                 |
 
 For more information visit this link: [Docker Containers](https://docs.docker.com/engine/reference/commandline/container/)
 
@@ -308,15 +246,15 @@ Docker network is a connection and communication way between docker containers a
 
 ### Basic Docker network commands
 
-| Command           | Description                                           |
-| ----------------- | ----------------------------------------------------- |
-| docker connect    | Connect a container to a network.                     |
-| docker create     | Create a new network.                                 |
-| docker disconnect | Disconnect a container from a network.                |
-| docker inspect    | Display detailed information on one or more networks. |
-| docker ls         | List all networks.                                    |
-| docker prune      | Remove unused networks.                               |
-| docker rm         | Remove one or more network.                           |
+| Command                   | Description                                           |
+| ------------------------- | ----------------------------------------------------- |
+| docker network connect    | Connect a container to a network.                     |
+| docker network create     | Create a new network.                                 |
+| docker network disconnect | Disconnect a container from a network.                |
+| docker network inspect    | Display detailed information on one or more networks. |
+| docker network ls         | List all networks.                                    |
+| docker network prune      | Remove unused networks.                               |
+| docker network rm         | Remove one or more network.                           |
 
 For more information visit this link: [Docker Network](https://docs.docker.com/network/)
 
@@ -328,13 +266,13 @@ Docker volumes are directories or filesystem that exist outside the containers  
 
 ### Basic Docker volume commands
 
-| Command        | Description                                          |
-| -------------- | ---------------------------------------------------- |
-| docker create  | Create a new volume                                  |
-| docker inspect | Display detailed information on one or more volumes. |
-| docker ls      | List all volumes.                                    |
-| docker prune   | Remove unused volumes.                               |
-| docker rm      | Remove on or more volumes.                           |
+| Command               | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| docker volume create  | Create a new volume                                  |
+| docker volume inspect | Display detailed information on one or more volumes. |
+| docker volume ls      | List all volumes.                                    |
+| docker volume prune   | Remove unused volumes.                               |
+| docker volume rm      | Remove on or more volumes.                           |
 
 For more information visit this link: [Docker volume](https://docs.docker.com/storage/volumes/)
 
@@ -429,11 +367,5 @@ For more information visit this link: [Dockerfile Docs](https://docs.docker.com/
 Up to this point,  a large proportion of the theoretical part of Docker technology has been covered, such brief introduction enables the reader to have a clear idea about docker as well as its related issues  and concepts. In cases there is a need for extra information and further reading, a Docker documentation link is provided at the end of each section that route you directly toward the documentation provided by docker for the same topic. An extra hands-on example on how to use docker commands is provided [here]
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-We wish you all the best
-
-Yazan Shannak
-
-Saeed Shurrab
 
 
