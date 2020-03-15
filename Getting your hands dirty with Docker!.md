@@ -330,7 +330,37 @@ A /run/nginx.pid
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-docker history command:
+`docker history` command: returns the list of changes and modifications that have been performed on the image as follow:
+
+```
+docker history <image-name>
+```
+
+As an example, I will check the list of changes that have been performed on `nginx` as follow:
+
+```
+docker history nginx
+```
+
+Expected output:
+
+```
+PS G:\> docker history nginx
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+6678c7c2e56c        10 days ago         /bin/sh -c #(nop)  CMD ["nginx" "-g" "daemon…   0B
+<missing>           10 days ago         /bin/sh -c #(nop)  STOPSIGNAL SIGTERM           0B
+<missing>           10 days ago         /bin/sh -c #(nop)  EXPOSE 80                    0B
+<missing>           10 days ago         /bin/sh -c ln -sf /dev/stdout /var/log/nginx…   22B
+<missing>           10 days ago         /bin/sh -c set -x     && addgroup --system -…   57.6MB
+<missing>           10 days ago         /bin/sh -c #(nop)  ENV PKG_RELEASE=1~buster     0B
+<missing>           10 days ago         /bin/sh -c #(nop)  ENV NJS_VERSION=0.3.9        0B
+<missing>           10 days ago         /bin/sh -c #(nop)  ENV NGINX_VERSION=1.17.9     0B
+<missing>           2 weeks ago         /bin/sh -c #(nop)  LABEL maintainer=NGINX Do…   0B
+<missing>           2 weeks ago         /bin/sh -c #(nop)  CMD ["bash"]                 0B
+<missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:e5a364615e0f69616…   69.2MB
+```
+
+
 
 #### Registry commands
 
