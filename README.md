@@ -8,7 +8,7 @@ This tutorial is to help students learn the essential components of [Docker](htt
 
 - Docker Tutorial: The basic theory behind Docker and its components, you will find detailed but simple explanation of the different aspects of Docker and how it works 
 
-- Getting your hands dirty with Docker!: Detailed step by step example for using Docker
+- Getting your hands dirty with Docker!: Detailed step by step example for using Docker commands
 
 - Docker Cheat Sheet: A cheat sheet for Docker commands, quickly find the command you need (under development)
 
