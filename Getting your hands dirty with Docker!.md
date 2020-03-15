@@ -431,6 +431,20 @@ note that docker will look for the image on your local machine if it is not avai
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+doc
+
+
+
+
+
+
+
+
+
+
+
+
+
 `docker image push` command: allow the user to transfer his/her own created into either private registry or public registry (docker HUB)  according to the following structure: 
 
 ```
@@ -658,6 +672,30 @@ docker container prune <container-name>
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container rename` command: enable the user to change the name of certain container as follow:
+
+```
+docker container rename <old-name> <new-name>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container inspect` command: return a detailed information about certain container such as creation date, driver, directory and name according to the following structure:
+
+```
+docker container inspect <container-name>
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker container commit` command: create an image from certain container after applying some changes to it according to the following structure:
+
+```
+docker container commit <container-name> <image-name:tage>
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 `container lifecycle` commands:  life cycle commands enable the user to manage the operation status of Docker containers and include:
 
