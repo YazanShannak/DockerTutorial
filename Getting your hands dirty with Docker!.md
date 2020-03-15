@@ -431,7 +431,26 @@ note that docker will look for the image on your local machine if it is not avai
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-docker image build command: this command enables the user to create a docker image from previously built dockerfile according to the following structure:
+docker image ls command: this command list all pulled images on your local machine as follow:
+
+```
+docker image ls
+```
+
+Expected output:
+
+```
+REPOSITORY                       TAG                       IMAGE ID            CREATED             SIZE
+bde2020/hadoop-resourcemanager   1.1.0-hadoop2.7.1-java8   164840a98e41        11 days ago         1.37GB
+bde2020/hadoop-historyserver     1.1.0-hadoop2.7.1-java8   4401652b4015        11 days ago         1.37GB
+bde2020/hadoop-nodemanager       1.1.0-hadoop2.7.1-java8   d7e90e6e688d        11 days ago         1.37GB
+bde2020/hadoop-datanode          1.1.0-hadoop2.7.1-java8   285027d5b6a5        11 days ago         1.37GB
+bde2020/hadoop-namenode          1.1.0-hadoop2.7.1-java8   c65247bab751        11 days ago         1.37GB
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker image build` command: this command enables the user to create a docker image from previously built dockerfile according to the following structure:
 
 ```
 docker image build <dockerfile-path>
@@ -514,20 +533,112 @@ REPOSITORY                       TAG                       IMAGE ID            C
 myubuntu                         latest                    d83d0e3143f5        8 hours ago         150MB
 ```
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+`docker image tag` command: this command enables the user to change the name of certain image by creating new named image and keeping the old image as follow:
 
+```
+docker tag <image-name> <new-image-name>
+```
 
+As an example, I will rename `myubuntu` image into `sa3eedsh/myubunto` . I will explain the reason behind this naming scheme in the next command.
+
+```
+docker image tag myubuntu:latest sa3eedsh/myubuntu:latest
+```
+
+Expected output:
+
+```
+PS C:\Users\Dell> docker image tag myubuntu:latest sa3eedsh/myubuntu:latest
+PS C:\Users\Dell> docker image ls
+REPOSITORY                       TAG                       IMAGE ID            CREATED             SIZE
+myubuntu                         latest                    d83d0e3143f5        11 hours ago        150MB
+sa3eedsh/myubuntu                latest                    d83d0e3143f5        11 hours ago        150MB
+```
 
 `docker image push` command: allow the user to transfer his/her own created image into either private or public registry (docker HUB)  according to the following structure: 
 
 ```
-docker image push <username/registry-name/> <image-name:tage>
+docker image push <username/registry-name/><image-name:tage>
 ```
 
-For instance, I will push the previously created  `myubuntu` image to  my public registry on docker HUB as follow: 
+For instance, I will push the previously renamed image `sa3eedsh/myubuntu`  to  my public registry on docker HUB. You have to sign up on docker HUB from this [link](https://hub.docker.com/signup) and create your own public registry. Further you have to log in  to docker HUB with your credentials. As it can be observed from the previous command structure that the push commands requires a special naming format that includes the username and the registry name to be included in the image name , for this reason I included my username in the image name. with respect to the registry name, docker hub is the default registry so that there is no need to include it .  lets push our image :  
 
 ```
+docker login -u=sa3eedsh -p=***************** 
+docker image push sa3eed/myubuntu
+```
 
+Expected output:
+
+```
+PS C:\Users\Dell> docker login -u=sa3eedsh -p=******************
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+PS C:\Users\Dell> docker push sa3eedsh/myubuntu
+The push refers to repository [docker.io/sa3eedsh/myubuntu]
+988d793d0868: Pushed                                                                                                                                                                                                                         4ae3adcb66cb: Pushed                                                                                                                                                                                                                         aa6685385151: Pushed                                                                                                                                                                                                                         0040d8f00d7e: Pushed                                                                                                                                                                                                                         9e6f810a2aab: Pushed                                                                                                                                                                                                                         latest: digest: sha256:14d45c1e39e6e606a19e78f592678cac8690c390c283d0a48a64dec44de3032c size: 1362
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker image inspect command: return a detailed information about certain image such as creation date, network settings, name etc... according to the following structure:
+
+```
+docker image inspect <image-name>
+```
+
+The output of such command is too long, so that it is not included here: DIY.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker image prune command: remove unused image from your local machine as follow:
+
+```
+docker image prune 
+```
+
+Expected Output:
+
+```
+PS C:\Users\DELL> docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
+Deleted Images:
+deleted: sha256:2b7b1946744afdb02668a61d203105f9ae49fe7ce740ab5cef8c6ad1c3ce45d7
+deleted: sha256:e661b233c5517d846b148ffabc9871d533d654ca45422bfb379be3c432912245
+deleted: sha256:3cb740ec31d08af9f4fd9e8d820b57f5854d1d943dc549d1f1f3dee946e4c97f
+deleted: sha256:a35ac396cdd479b77cad43aea6808144befa7eb78fb2c9e864dd3dd5d84955ac
+deleted: sha256:1ea6b585eb0a23015f869c078609942daf6edb45e987d019470263486a82c113
+deleted: sha256:a44e347e21e392c9d55be586f15b134f01caf7ca1a65b3410bc24ec5a21e0d98
+
+Total reclaimed space: 25.89MB
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker image rmi` command: enable the user to remove one ore more image as follow:
+
+```
+docker image rmi <image-name1> <image-name_2> ...... <image-name_n>
+```
+
+Expected output:
+
+```
+PS C:\Users\DELL> docker image ls
+REPOSITORY                       TAG                       IMAGE ID            CREATED             SIZE
+hello-world                      latest                    fce289e99eb9        14 months ago       1.84kB
+
+PS C:\Users\DELL> docker image rmi hello-world
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:f9dfddf63636d84ef479d645ab5885156ae030f611a56f3a7ac7f2fdd86d7e4e
+Deleted: sha256:fce289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e
+Deleted: sha256:af0b15c8625bb1938f1d7b17081031f649fd14e6b233688eea3c5483994a66a3
+
+PS C:\Users\DELL> docker image ls
+REPOSITORY                       TAG                       IMAGE ID            CREATED             SIZE
 ```
 
 
