@@ -431,27 +431,100 @@ note that docker will look for the image on your local machine if it is not avai
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-doc
-
-
-
-
-
-
-
-
-
-
-
-
-
-`docker image push` command: allow the user to transfer his/her own created into either private registry or public registry (docker HUB)  according to the following structure: 
+docker image build command: this command enables the user to create a docker image from previously built dockerfile according to the following structure:
 
 ```
-docker image push [registry-name/][username/]<image-name:tage>:
+docker image build <dockerfile-path>
 ```
 
-For instance, I will push the previously downloaded hello-world image to  my public registry on docker HUB as follow: 
+building image according to this structure will set the image name into  `none` . To overcome this issue, i am going to modify the command by adding the flag  `-t` to specify the image name and tag as follow:
+
+```
+docker image build -t <image-name:tag> <dockerfile-path>
+```
+
+to show how this command work, I will build an image of `ubuntu OS` using dockerfile that has been created for this purpose.  The dockerfile structure for our image is as follow:
+
+```
+#The base image for our image: it is recommended to be pulled on your local machine
+FROM ubuntu:16.04
+#The author name 
+MAINTAINER Yazan and Saeed
+# RUN command is excuted during building the image: in this context it installs Ubuntu updates 
+RUN apt-get update
+# CMD commands is excuted once you create a container from the built image
+CMD ["echo", "hello from my first built image"]
+```
+
+docker file must be named with Dockerfile and without extension. Do not worry about dockerfiles, we are going to describe them in a separated tutorial in a detailed manner, for now just follow the command structure. I will build an image from the previous dockerfile which is stored on my desktop with name of myubuntu: latest as follow
+
+```
+docker image build -t myubuntu:latest C:\Users\DELL\Desktop\
+```
+
+Expected output:
+
+```
+PS C:\Users\Dell> docker image build -t myubuntu:latest C:\Users\DELL\Desktop\
+Sending build context to Docker daemon  22.52MB
+Step 1/4 : FROM ubuntu:16.04
+ ---> 77be327e4b63
+Step 2/4 : MAINTAINER Yazan and Saeed
+ ---> Running in fb8395bbdf9d
+Removing intermediate container fb8395bbdf9d
+ ---> bb004b94820b
+Step 3/4 : RUN apt-get update
+ ---> Running in 9ce74575f098
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:2 http://security.ubuntu.com/ubuntu xenial-security InRelease [109 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
+Get:5 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [1063 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1558 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial/restricted amd64 Packages [14.1 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9827 kB]
+Get:9 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.7 kB]
+Get:10 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [620 kB]
+Get:11 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [6282 B]
+Get:12 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [176 kB]
+Get:13 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [1433 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [13.1 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [1022 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [19.3 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [7942 B]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8807 B]
+Fetched 16.4 MB in 2min 29s (109 kB/s)
+Reading package lists...
+Removing intermediate container 9ce74575f098
+ ---> 70078a183b69
+Step 4/4 : CMD ["echo", "hello from your first built image"]
+ ---> Running in 3d19ef1da849
+Removing intermediate container 3d19ef1da849
+ ---> d83d0e3143f5
+Successfully built d83d0e3143f5
+Successfully tagged myubuntu:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+```
+
+To check :
+
+```
+PS C:\Users\Dell> docker image ls
+REPOSITORY                       TAG                       IMAGE ID            CREATED             SIZE
+myubuntu                         latest                    d83d0e3143f5        8 hours ago         150MB
+```
+
+
+
+
+
+`docker image push` command: allow the user to transfer his/her own created image into either private or public registry (docker HUB)  according to the following structure: 
+
+```
+docker image push <username/registry-name/> <image-name:tage>
+```
+
+For instance, I will push the previously created  `myubuntu` image to  my public registry on docker HUB as follow: 
 
 ```
 
