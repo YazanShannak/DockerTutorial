@@ -2,8 +2,6 @@
 
 [TOC]
 
-
-
 ## Intro
 
 this tutorial is mainly intended to give the reader a hand-on experience on Docker Commands. to achieve maximum understanding of Docker technology, we have created a simple tutorial that aims at introducing the reader to the main concepts of Docker technology. So, it is highly recommended to read the tutorial before proceeding with docker commands.
@@ -45,14 +43,15 @@ Congratulations!! you have just downloaded your first image and created your fir
 
 ## Docker Commands
 
-Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into six categories including :
+Basically, there are two types of Docker commands including`Command-Line Interface (CLI)` & Docker `Instructions Commands`. Docker CLI are used mainly for managing docker components such as images and containers, while Docker instruction files are mainly used for creating Dockerfiles. Docker CLI can be divided into seven categories including :
 
 1. Important flags 
 2. General commands
-3. Container commands
-4. Image commands
-5. Volume commands.
-6. Network commands
+3. Registry commands
+4. Container commands
+5. Image commands
+6. Volume commands.
+7. Network commands
 
 We will pass in a detailed manner through each category and provide a specific example to the most important commands in each category. it is worth noting that docker has a wide range commands that can not be covered in one tutorial so bear in that how much you practice, how much you gain experience and knowledge. One more thing to to mention before starting our journey is that docker provides a detailed description of its commands. So, in case you are stuck with a certain commands do not hesitate and feel free to ask Docker using the help command as follow: 
 
@@ -72,16 +71,17 @@ Flags are not docker commands, but they play an important role in controlling th
 | -a     | all: list all items for a certain docker component           |
 | -d     | detach: run a command in the background and make the terminal available for other commands |
 | -f     | force : force command to be performed.                       |
-| -p     | publish:  explicitly express a port in a network             |
+| -u     | username: set your username to login to docker hub           |
+| -p     | publish:  explicitly express a port in a network for for a created container<br />password: set your password to login to docker hub |
 | -q     |                                                              |
-| -t     | tag                                                          |
+| -t     | tag: gives an image a certain name                           |
 | -v     | volume: mount volume to a container upon creation            |
 | -it    | interactive: perform command in the interactive mode         |
 | --name | name: set a user-defined name to a certain docker component  |
 | --help | help: gives a detailed description of a specific command     |
 | --net  | network: assign certain network to a container               |
 
-#### General commands
+#### Informative commands
 
 In the following section, we are going to describe a set of 
 
@@ -224,10 +224,10 @@ Server:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`docker stats` command: gives a detailed information about the resources consumption such as CPU, RAM and network  of your local machine by the running containers.
+`docker stats` command: gives a detailed information about the resources consumption such as CPU, RAM and network  of your local machine by the running containers or you can specify certain container by listing its name in .
 
 ```
-docker Stats 
+docker Stats <container-name>
 ```
 
 Expected output:
@@ -241,19 +241,133 @@ b621c883dea9        resourcemanager     0.07%               315.9MiB / 1.943GiB 
 8b8e7fcd64f0        datanode1           0.11%               187.2MiB / 1.943GiB   9.41%               12.6kB / 22.5kB     0B / 0B             52
 975aec01391f        datanode3           0.04%               188.2MiB / 1.943GiB   9.46%               12.7kB / 22.5kB     0B / 0B             52
 3032f548cfe5        datanode2           0.04%               211.3MiB / 1.943GiB   10.62%              13.7kB / 23.3kB     0B / 0B             52
-4f6eddd41e8a        namenode            0.04%               196.2MiB / 1.943GiB   9.86%               62kB / 20.9kB       0B / 0B             56
+4f6eddd41e8a        namenode            0.04%               196.2MiB / 1.943GiB   9.86%               62kB / 20.9kB       0B / 0B             56 
 ```
 
-To obtain the stats of a specific container:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker port command: returns the opened port or a specific mapping in a certain container  as follow:
 
 ```
-docker stats <container-name> 
+docker port <container-name>
 ```
 
- or
+if there is no published port for the container upon creation the command will return nothing, and vice versa, the next example will make it easy for you to understand. I will check the the ports of two created containers from `nginx` image one with published  port and the other without. Do not worry about the details, we will explain all other used command in this example later on in this tutorial, just follow the `docker ports` commands.
 
 ```
-docker stats <container-ID> 
+#running a container with a puplished port
+PS G:\> docker run  -d --name bar -p 80:80 nginx
+22f7363632c45e0b4a4fee54af05ad5c0678a17a9026888d5c42fee8a00bf6f0
+
+#running a container without puplished port
+PS G:\> docker container run --name foo nginx
+
+PS G:\> docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+1dc87e8e3aa4        nginx               "nginx -g 'daemon of…"   8 hours ago         Up 13 seconds       80/tcp               foo
+22f7363632c4        nginx               "nginx -g 'daemon of…"   8 hours ago         Up About a minute   0.0.0.0:80->80/tcp   bar
+
+PS G:\> docker port bar
+80/tcp -> 0.0.0.0:80
+
+PS G:\> docker port foo
+PS G:\>
+
+```
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker top` command:  returns the running operation in a certain container as follow:
+
+```
+docker top <container-name>
+```
+
+for example, I will check the running operations in the previously created container so called `foo`:
+
+```
+docker top foo
+```
+
+Expected output:
+
+```
+PS G:\> docker top foo
+PID                 USER                TIME                COMMAND
+16061               root                0:00                nginx: master process nginx -g daemon off;
+16094               101                 0:00                nginx: worker process
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+`docker diff` command: return the changed files and directories in a container᾿s filesystem since the container creation. Three different changes are tracked including {A: Addition, D: Deletion, C:Change} . The command structure is as follow:
+
+```
+docker diff <container-name> 
+```
+
+As an example, I will check the changes in `foo` container:
+
+```
+docker diff foo
+```
+
+Expected Output:
+
+```
+PS G:\> docker diff foo
+C /var
+C /var/cache
+C /var/cache/nginx
+A /var/cache/nginx/scgi_temp
+A /var/cache/nginx/uwsgi_temp
+A /var/cache/nginx/client_temp
+A /var/cache/nginx/fastcgi_temp
+A /var/cache/nginx/proxy_temp
+C /run
+A /run/nginx.pid
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker history command:
+
+#### Registry commands
+
+`docker login` command: enables the user to sign in a into either public or private registry as follow:
+
+```
+docker login -u=<user-name> -p=<password> <registry-server>
+```
+
+The default registry server is https://index.docker.io/v1/. Thus, if the server is not specified it will automatically select the default. For example, I am going to login to my public registry on `docker hub` as follow:
+
+```
+docker login -u=sa3eedsh -p=************** https://index.docker.io/v1/
+```
+
+Expected output:
+
+```
+PS G:\> docker login -u=sa3eedsh -p=***************** 
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker logout: command: enable the user to sign out from a previously signed in registry as follow:
+
+```
+docker logout
+```
+
+ Expected output:
+
+```
+PS G:\> docker logout
+Removing login credentials for https://index.docker.io/v1/
 ```
 
 
@@ -263,13 +377,13 @@ docker stats <container-ID>
 `docker image pull` command: allow the user to download image from either docker hub or docker registry into your local machine using the following structure:
 
 ```
-docker image pull <image-name>[:tag]
+docker image pull <image-name:tag>
 ```
 
 For instance, pulling the the latest version of `hello-world` can be achieved through the following command: 
 
 ```
-docker pull image hello-world:latest
+docker image pull hello-world:latest
 ```
 
 Expected output:
@@ -287,10 +401,10 @@ note that docker will look for the image on your local machine if it is not avai
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-`docker image push` command: allow the user to transfer to transfer his/her own created into either private registry or public registry (docker HUB) using the following structure: 
+`docker image push` command: allow the user to transfer his/her own created into either private registry or public registry (docker HUB)  according to the following structure: 
 
 ```
-docker image push [registry-name/][username/]<image-name>[:tag]
+docker image push [registry-name/][username/]<image-name:tage>:
 ```
 
 For instance, I will push the previously downloaded hello-world image to  my public registry on docker HUB as follow: 
