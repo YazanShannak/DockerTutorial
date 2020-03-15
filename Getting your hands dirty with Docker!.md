@@ -73,7 +73,6 @@ Flags are not docker commands, but they play an important role in controlling th
 | -f     | force : force command to be performed.                       |
 | -u     | username: set your username to login to docker hub           |
 | -p     | publish:  explicitly express a port in a network for for a created container<br />password: set your password to login to docker hub |
-| -q     |                                                              |
 | -t     | tag: gives an image a certain name                           |
 | -v     | volume: mount volume to a container upon creation            |
 | -it    | interactive: perform command in the interactive mode         |
